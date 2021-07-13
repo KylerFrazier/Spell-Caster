@@ -58,5 +58,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-# VS Code stuff
+# VS Code cache and stuff
 .vscode/
