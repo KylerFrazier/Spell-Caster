@@ -39,4 +39,8 @@ public class TriggerCheckpoint : MonoBehaviour
         if (hand.tag == TriggerTag)
             active = false;
     }
+
+    public bool isActive() {
+        return active;
+    } 
 }

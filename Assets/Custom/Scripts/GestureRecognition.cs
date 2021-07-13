@@ -34,7 +34,7 @@ public class GestureRecognition : MonoBehaviour
     }
 
     void Update() {
-        if (leftCheckpoints[0].active && rightCheckpoints[0].active) {
+        if (leftCheckpoints[0].isActive() && rightCheckpoints[0].isActive()) {
             if (!active) {
                 active = true;
                 Instantiate(
