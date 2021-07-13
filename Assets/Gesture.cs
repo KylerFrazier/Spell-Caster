@@ -50,7 +50,7 @@ public class Gesture : MonoBehaviour
             spell = Instantiate(spellPrefab, center(), Quaternion.identity);
             incrementState();
         } 
-        else if (0 < state && state < n-1) {
+        else if (0 <= state && state < n-1) {
             if (isActive(state+1))
                 incrementState();
             else if (isActive(state))
@@ -58,7 +58,7 @@ public class Gesture : MonoBehaviour
             else
                 moveState();
         } 
-        else if (state == n) {
+        else if (state == n-1) {
             if (isActive(state))
                 holdState();
             else
@@ -80,6 +80,8 @@ public class Gesture : MonoBehaviour
     }
 
     private void holdState() {
+        spell.transform.position = center();
+
         moveTimer = 0;
         
         if (holdTimer + Time.deltaTime <= holdTimes[state])
@@ -89,6 +91,8 @@ public class Gesture : MonoBehaviour
     }
 
     private void moveState() {
+        spell.transform.position = center();
+
         holdTimer = 0;
 
         if (moveTimer + Time.deltaTime <= moveTimes[state])
@@ -109,5 +113,7 @@ public class Gesture : MonoBehaviour
         moveTimer = 0;
         if (destroy)
             Destroy(spell);
+        else
+            spell = null;
     }
 }
